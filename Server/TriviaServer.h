@@ -18,12 +18,22 @@ private:
 	void accept();
 	void clientHandler(SOCKET s);
 	void safeDeleteUser(RecievedMessage* r);
+
 	User* handleSignin(RecievedMessage* r);
 	bool handleSignup(RecievedMessage* r);
 	void handleSignout(RecievedMessage* r);
+
 	void handleLeaveGame(RecievedMessage* r);
 	void handleStartGame(RecievedMessage* r);
 	void handlePlayerAnswer(RecievedMessage* r);
+
+	bool handleCreateRoom(RecievedMessage* r);
+	bool handleCloseRoom(RecievedMessage* r);
+	bool handleJoinRoom(RecievedMessage* r);
+	bool handleLeaveRoom(RecievedMessage* r);
+	void handleGetUsersInRoom(RecievedMessage* r);
+	void handleGetRooms(RecievedMessage* r);
+
 
 
 public:
