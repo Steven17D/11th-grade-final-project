@@ -1,8 +1,6 @@
-#include <vector>
-#include <thread>
-#include <mutex>
-#include <map>
-#include <WinSock2.h>
+#include "User.h"
+#include "Room.h"
+#include "RecievedMessage.h"
 
 class TriviaServer{
 private:
@@ -34,13 +32,20 @@ private:
 	void handleGetUsersInRoom(RecievedMessage* r);
 	void handleGetRooms(RecievedMessage* r);
 
+	void handleGetBestScores(RecievedMessage* r);
+	void handleGetPersonalStatus(RecievedMessage* r);
 
+	void hendleRecievedMessage();
+	void addRecievedMessage(RecievedMessage* r);
+	RecievedMessage* buildRecieveMessage(SOCKET s, int n);
+
+	User* getUserByName(string name);
+	User* getUserBySocket(SOCKET s);
+	Room* getRoomById(int id);
 
 public:
 	TriviaServer();
 	~TriviaServer();
 	
 	void server();
-
-	
 };

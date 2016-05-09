@@ -68,8 +68,11 @@
     <ClCompile Include="sqlite3.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="RecievedMessage.h" />
+    <ClInclude Include="Room.h" />
     <ClInclude Include="sqlite3.h" />
     <ClInclude Include="TriviaServer.h" />
+    <ClInclude Include="User.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
