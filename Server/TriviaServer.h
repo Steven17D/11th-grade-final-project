@@ -1,6 +1,7 @@
 #include "User.h"
 #include "Room.h"
 #include "RecievedMessage.h"
+#include "DataBase.h"
 
 class TriviaServer{
 private:

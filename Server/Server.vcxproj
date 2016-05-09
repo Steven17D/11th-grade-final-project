@@ -68,6 +68,7 @@
     <ClCompile Include="sqlite3.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DataBase.h" />
     <ClInclude Include="RecievedMessage.h" />
     <ClInclude Include="Room.h" />
     <ClInclude Include="sqlite3.h" />
