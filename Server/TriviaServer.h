@@ -2,7 +2,7 @@
 #include "Room.h"
 #include "RecievedMessage.h"
 #include "DataBase.h"
-
+//test
 class TriviaServer{
 private:
 	SOCKET _socket;
