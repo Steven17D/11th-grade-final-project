@@ -1,8 +1,14 @@
-#include "User.h"
-#include "Room.h"
-#include "RecievedMessage.h"
+#ifndef TRIVIASERVER_H_
+#define TRIVIASERVER_H_
+#include <iostream>
+#include <WinSock2.h>
+#include <map>
 #include "DataBase.h"
-
+#include "User.h"
+#include <mutex>
+#include <queue>
+#include "RecievedMessage.h"
+using namespace std;
 class TriviaServer{
 private:
 	SOCKET _socket;
@@ -50,3 +56,5 @@ public:
 	
 	void server();
 };
+
+#endif
