@@ -5,8 +5,10 @@
 #include "Question.h"
 #include <iostream>
 #include <vector>
+#include <map>
 using namespace std;
 class User;
+class DataBase;
 class Game{
 private:
 	vector<Question*> _questions;

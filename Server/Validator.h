@@ -4,8 +4,8 @@
 using namespace std;
 class Validator{
 public:
-	static bool isPasswordValid();
-	static bool isUsernameValid();
+	static bool isPasswordValid(string password);
+	static bool isUsernameValid(string username);
 };
 
 #endif

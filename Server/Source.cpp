@@ -1,4 +1,7 @@
 #include "TriviaServer.h"
+#include "Validator.h"
+#include <iostream>
+#include <string>
 #include <thread>
 
 //      ______ _   __ ____     ____   ____   ____       __ ______ ______ ______                  
@@ -14,8 +17,13 @@
 
 using namespace std;
 
-int main(){
-	vector<thread> threadPool;
-	
+int main(){ //VALIDATOR CLASS TESTING
+	string in;
+	Validator d;
+	do{
+		cout << "Enter: ";
+		getline(cin, in);
+		cout << endl << d.isPasswordValid(in) << endl;
+	} while (in != "0");
 	return 0;
 }

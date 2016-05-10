@@ -3,7 +3,10 @@
 #include "Game.h"
 #include "Room.h"
 #include <iostream>
+#include <WinSock2.h>
 using namespace std;
+class Room;
+class Game;
 class User{
 private:
 	string _username;
