@@ -1,5 +1,6 @@
 #include "TriviaServer.h"
 #include "Validator.h"
+#include "DataBase.h"
 #include <iostream>
 #include <string>
 #include <thread>
@@ -28,6 +29,8 @@ int main(){
 			<< endl << "username: " << d.isUsernameValid(in) << endl;
 	} while (in != "0");
 	*/
+
+	DataBase* db = new DataBase();
 
 	return 0;
 }

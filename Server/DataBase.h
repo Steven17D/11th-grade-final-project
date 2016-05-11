@@ -3,9 +3,12 @@
 #include "Question.h"
 #include <iostream>
 #include <vector>
+#include "sqlite3.h"
 using namespace std;
 class DataBase{
 private:
+	sqlite3* _db;
+
 	static int callbackCount(void*, int, char**, char**);
 	static int callbackQuestions(void*, int, char**, char**);
 	static int callbackBestScores(void*, int, char**, char**);

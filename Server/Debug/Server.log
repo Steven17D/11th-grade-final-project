@@ -1,23 +1,32 @@
-﻿Build started 11/05/2016 13:31:05.
+﻿Build started 11/05/2016 21:34:01.
      1>Project "C:\Users\StevenD\Desktop\triviaProjectAdditionalFiles\Project\end-project\Server\Server.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Source.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt DataBase.cpp Game.cpp RecievedMessage.cpp Room.cpp Source.cpp TriviaServer.cpp User.cpp
          Source.cpp
-       Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\StevenD\Desktop\triviaProjectAdditionalFiles\Project\end-project\Debug\Server.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\StevenD\Desktop\triviaProjectAdditionalFiles\Project\end-project\Debug\Server.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\StevenD\Desktop\triviaProjectAdditionalFiles\Project\end-project\Debug\Server.lib" /MACHINE:X86 Debug\DataBase.obj
-         Debug\Game.obj
-         Debug\Helper.obj
-         Debug\Question.obj
-         Debug\RecievedMessage.obj
-         Debug\Room.obj
-         Debug\Source.obj
-         Debug\sqlite3.obj
-         Debug\TriviaServer.obj
-         Debug\User.obj
-         Debug\Validator.obj
-         Server.vcxproj -> C:\Users\StevenD\Desktop\triviaProjectAdditionalFiles\Project\end-project\Debug\Server.exe
-     1>Done Building Project "C:\Users\StevenD\Desktop\triviaProjectAdditionalFiles\Project\end-project\Server\Server.vcxproj" (Build target(s)).
+         DataBase.cpp
+         Generating Code...
+     1>c:\users\stevend\desktop\triviaprojectadditionalfiles\project\end-project\server\database.cpp(17): error C4716: 'DataBase::callbackPersonalStatus' : must return a value
+     1>c:\users\stevend\desktop\triviaprojectadditionalfiles\project\end-project\server\database.cpp(13): error C4716: 'DataBase::callbackBestScores' : must return a value
+     1>c:\users\stevend\desktop\triviaprojectadditionalfiles\project\end-project\server\database.cpp(9): error C4716: 'DataBase::callbackQuestions' : must return a value
+     1>c:\users\stevend\desktop\triviaprojectadditionalfiles\project\end-project\server\database.cpp(37): error C4716: 'DataBase::isUserExists' : must return a value
+     1>c:\users\stevend\desktop\triviaprojectadditionalfiles\project\end-project\server\database.cpp(5): error C4716: 'DataBase::callbackCount' : must return a value
+     1>c:\users\stevend\desktop\triviaprojectadditionalfiles\project\end-project\server\database.cpp(41): error C4716: 'DataBase::addNewUser' : must return a value
+     1>c:\users\stevend\desktop\triviaprojectadditionalfiles\project\end-project\server\database.cpp(45): error C4716: 'DataBase::isUserAndPassMatch' : must return a value
+     1>c:\users\stevend\desktop\triviaprojectadditionalfiles\project\end-project\server\database.cpp(50): error C4716: 'DataBase::initQuestions' : must return a value
+     1>c:\users\stevend\desktop\triviaprojectadditionalfiles\project\end-project\server\database.cpp(54): error C4716: 'DataBase::getBestScores' : must return a value
+     1>c:\users\stevend\desktop\triviaprojectadditionalfiles\project\end-project\server\database.cpp(58): error C4716: 'DataBase::getPersonalStatus' : must return a value
+     1>c:\users\stevend\desktop\triviaprojectadditionalfiles\project\end-project\server\database.cpp(63): error C4716: 'DataBase::insertNewGame' : must return a value
+     1>c:\users\stevend\desktop\triviaprojectadditionalfiles\project\end-project\server\database.cpp(67): error C4716: 'DataBase::updateGameStatus' : must return a value
+     1>c:\users\stevend\desktop\triviaprojectadditionalfiles\project\end-project\server\database.cpp(71): error C4716: 'DataBase::addAnswerToPlayer' : must return a value
+         Compiling...
+         User.cpp
+         TriviaServer.cpp
+         Room.cpp
+         RecievedMessage.cpp
+         Game.cpp
+         Generating Code...
+     1>Done Building Project "C:\Users\StevenD\Desktop\triviaProjectAdditionalFiles\Project\end-project\Server\Server.vcxproj" (Build target(s)) -- FAILED.
 
-Build succeeded.
+Build FAILED.
 
-Time Elapsed 00:00:01.61
+Time Elapsed 00:00:04.12
