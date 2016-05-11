@@ -1,6 +1,6 @@
 #include "Validator.h"
 
-bool isPasswordValid(string password){
+bool Validator::isPasswordValid(string password){
 	/*correct password should contain then 3 chars
 	must not contain spaces
 	must contain one number
@@ -27,7 +27,7 @@ bool isPasswordValid(string password){
 	return (!haveSpace && haveNumber && haveLowerCase && haveUpperCase);
 }
 
-bool isUsernameValid(string username){
+bool Validator::isUsernameValid(string username){
 	/*correct username must not be empty
 	must start with a letter
 	must not contain spaces*/

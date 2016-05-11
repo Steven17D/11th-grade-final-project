@@ -17,13 +17,17 @@
 
 using namespace std;
 
-int main(){ //VALIDATOR CLASS TESTING
+int main(){ 
+	/*	VALIDATOR CLASS TESTING everything works
 	string in;
 	Validator d;
 	do{
 		cout << "Enter: ";
 		getline(cin, in);
-		cout << endl << d.isPasswordValid(in) << endl;
+		cout << endl << "password: " << d.isPasswordValid(in)
+			<< endl << "username: " << d.isUsernameValid(in) << endl;
 	} while (in != "0");
+	*/
+
 	return 0;
 }
