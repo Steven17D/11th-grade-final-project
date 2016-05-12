@@ -12,7 +12,7 @@ class DataBase;
 class Game{
 private:
 	vector<Question*> _questions;
-	vector<User*> _player;
+	vector<User*> _players;
 	int _questions_no;
 	int _currQuestionIndex;
 	DataBase& _db;

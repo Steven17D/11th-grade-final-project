@@ -20,7 +20,8 @@ int DataBase::callbackPersonalStatus(void*, int, char**, char**){
 DataBase::DataBase(){
 	try{ //db open
 		int rc = sqlite3_open("test.db", &_db);
-		throw exception(sqlite3_errmsg(_db));
+		if (rc)
+			throw exception(sqlite3_errmsg(_db));
 	}
 	catch (exception e){
 		cout << e.what();
@@ -29,6 +30,7 @@ DataBase::DataBase(){
 
 DataBase::~DataBase(){
 	//close db
+	sqlite3_close(_db);
 }
 
 

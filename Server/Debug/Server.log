@@ -1,32 +1,30 @@
-﻿Build started 11/05/2016 21:34:01.
+﻿Build started 12/05/2016 21:44:51.
      1>Project "C:\Users\StevenD\Desktop\triviaProjectAdditionalFiles\Project\end-project\Server\Server.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt DataBase.cpp Game.cpp RecievedMessage.cpp Room.cpp Source.cpp TriviaServer.cpp User.cpp
-         Source.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt DataBase.cpp
          DataBase.cpp
-         Generating Code...
-     1>c:\users\stevend\desktop\triviaprojectadditionalfiles\project\end-project\server\database.cpp(17): error C4716: 'DataBase::callbackPersonalStatus' : must return a value
-     1>c:\users\stevend\desktop\triviaprojectadditionalfiles\project\end-project\server\database.cpp(13): error C4716: 'DataBase::callbackBestScores' : must return a value
-     1>c:\users\stevend\desktop\triviaprojectadditionalfiles\project\end-project\server\database.cpp(9): error C4716: 'DataBase::callbackQuestions' : must return a value
-     1>c:\users\stevend\desktop\triviaprojectadditionalfiles\project\end-project\server\database.cpp(37): error C4716: 'DataBase::isUserExists' : must return a value
-     1>c:\users\stevend\desktop\triviaprojectadditionalfiles\project\end-project\server\database.cpp(5): error C4716: 'DataBase::callbackCount' : must return a value
-     1>c:\users\stevend\desktop\triviaprojectadditionalfiles\project\end-project\server\database.cpp(41): error C4716: 'DataBase::addNewUser' : must return a value
-     1>c:\users\stevend\desktop\triviaprojectadditionalfiles\project\end-project\server\database.cpp(45): error C4716: 'DataBase::isUserAndPassMatch' : must return a value
-     1>c:\users\stevend\desktop\triviaprojectadditionalfiles\project\end-project\server\database.cpp(50): error C4716: 'DataBase::initQuestions' : must return a value
-     1>c:\users\stevend\desktop\triviaprojectadditionalfiles\project\end-project\server\database.cpp(54): error C4716: 'DataBase::getBestScores' : must return a value
-     1>c:\users\stevend\desktop\triviaprojectadditionalfiles\project\end-project\server\database.cpp(58): error C4716: 'DataBase::getPersonalStatus' : must return a value
-     1>c:\users\stevend\desktop\triviaprojectadditionalfiles\project\end-project\server\database.cpp(63): error C4716: 'DataBase::insertNewGame' : must return a value
-     1>c:\users\stevend\desktop\triviaprojectadditionalfiles\project\end-project\server\database.cpp(67): error C4716: 'DataBase::updateGameStatus' : must return a value
-     1>c:\users\stevend\desktop\triviaprojectadditionalfiles\project\end-project\server\database.cpp(71): error C4716: 'DataBase::addAnswerToPlayer' : must return a value
-         Compiling...
-         User.cpp
-         TriviaServer.cpp
-         Room.cpp
-         RecievedMessage.cpp
-         Game.cpp
-         Generating Code...
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\StevenD\Desktop\triviaProjectAdditionalFiles\Project\end-project\Debug\Server.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\StevenD\Desktop\triviaProjectAdditionalFiles\Project\end-project\Debug\Server.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\StevenD\Desktop\triviaProjectAdditionalFiles\Project\end-project\Debug\Server.lib" /MACHINE:X86 Debug\DataBase.obj
+         Debug\Game.obj
+         Debug\Helper.obj
+         Debug\Question.obj
+         Debug\RecievedMessage.obj
+         Debug\Room.obj
+         Debug\Source.obj
+         Debug\sqlite3.obj
+         Debug\TriviaServer.obj
+         Debug\User.obj
+         Debug\Validator.obj
+     1>Source.obj : error LNK2019: unresolved external symbol "public: __thiscall DataBase::DataBase(void)" (??0DataBase@@QAE@XZ) referenced in function _main
+     1>User.obj : error LNK2019: unresolved external symbol "public: __thiscall Game::~Game(void)" (??1Game@@QAE@XZ) referenced in function "public: void * __thiscall Game::`scalar deleting destructor'(unsigned int)" (??_GGame@@QAEPAXI@Z)
+     1>User.obj : error LNK2019: unresolved external symbol "public: bool __thiscall Game::leaveGame(class User *)" (?leaveGame@Game@@QAE_NPAVUser@@@Z) referenced in function "public: bool __thiscall User::leaveGame(void)" (?leaveGame@User@@QAE_NXZ)
+     1>User.obj : error LNK2019: unresolved external symbol "public: __thiscall Room::Room(int,class User *,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int,int,int)" (??0Room@@QAE@HPAVUser@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HHH@Z) referenced in function "public: bool __thiscall User::createRoom(int,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int,int,int)" (?createRoom@User@@QAE_NHV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HHH@Z)
+     1>User.obj : error LNK2019: unresolved external symbol "public: bool __thiscall Room::joinRoom(class User *)" (?joinRoom@Room@@QAE_NPAVUser@@@Z) referenced in function "public: bool __thiscall User::joinRoom(class Room *)" (?joinRoom@User@@QAE_NPAVRoom@@@Z)
+     1>User.obj : error LNK2019: unresolved external symbol "public: void __thiscall Room::leaveRoom(class User *)" (?leaveRoom@Room@@QAEXPAVUser@@@Z) referenced in function "public: void __thiscall User::leaveRoom(void)" (?leaveRoom@User@@QAEXXZ)
+     1>User.obj : error LNK2019: unresolved external symbol "public: int __thiscall Room::closeRoom(class User *)" (?closeRoom@Room@@QAEHPAVUser@@@Z) referenced in function "public: int __thiscall User::closeRoom(void)" (?closeRoom@User@@QAEHXZ)
+     1>C:\Users\StevenD\Desktop\triviaProjectAdditionalFiles\Project\end-project\Debug\Server.exe : fatal error LNK1120: 7 unresolved externals
      1>Done Building Project "C:\Users\StevenD\Desktop\triviaProjectAdditionalFiles\Project\end-project\Server\Server.vcxproj" (Build target(s)) -- FAILED.
 
 Build FAILED.
 
-Time Elapsed 00:00:04.12
+Time Elapsed 00:00:00.70
