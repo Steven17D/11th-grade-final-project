@@ -17,7 +17,7 @@ private:
 	int _currQuestionIndex;
 	DataBase& _db;
 	map<string, int> _results;
-	int currentTurnAnswers;
+	int _currentTurnAnswers;
 
 	bool insertGameToDB();
 	void initQuestionsFromDB();
