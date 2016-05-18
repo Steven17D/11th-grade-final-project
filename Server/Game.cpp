@@ -8,18 +8,30 @@ void Game::initQuestionsFromDB(){
 	
 }
 
-string creat118Msg(){
+string creat118Msg(Question* q){
+	string msg;
+	msg = "118";
+	char qSize[3] = { 0, 0, 0 };
+	qSize[2] = q->getQuestion().size() % 10;
+	qSize[1] = (q->getQuestion().size() % 100) / 10; // 245 % 100 = 45; 45 / 10 = 4;
+	qSize[0] = q->getQuestion().size() / 100;
+	msg = msg + qSize;
+	string* ans = q->getAnswers();
+	for (int i = 0; i < 4; i++){
+		
+	}
 
 }
 
 void Game::sendQuestionToAllUsers(){
 	_currentTurnAnswers = 0;
-	string msg = creat118Msg(); //message 118
+	string msg = creat118Msg(_questions[_currQuestionIndex]); //message 118
 	for (unsigned int i = 0; i < _players.size(); i++){
 		try{
 			_players[i]->send(msg);
 		}
 		catch(exception e){
+			_players[0]->send("1180");
 			cout << e.what() << endl;
 		}
 	}
