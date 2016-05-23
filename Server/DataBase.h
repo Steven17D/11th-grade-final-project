@@ -8,11 +8,13 @@ using namespace std;
 class DataBase{
 private:
 	sqlite3* _db;
+	char* _zErrMsg;
 
 	static int callbackCount(void*, int, char**, char**);
 	static int callbackQuestions(void*, int, char**, char**);
 	static int callbackBestScores(void*, int, char**, char**);
 	static int callbackPersonalStatus(void*, int, char**, char**);
+	static int callbackUsersList(void* users, int argc, char** argv, char** azColName);
 
 public:
 	DataBase();

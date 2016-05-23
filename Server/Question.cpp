@@ -7,13 +7,17 @@ Question::Question(int id, string q, string correctAns, string ans2, string ans3
 	_question = q;
 	std::default_random_engine generator;
 	std::uniform_int_distribution<int> distribution(1, 4);
-	vector<string> v = { correctAns, ans2, ans3, ans4 };
-	std::random_shuffle(v.begin(), v.end());
-	for (std::vector<string>::iterator it = v.begin() , int i = 0; it != v.end(); ++it , i++){
-		if (*it == correctAns){
+	vector<string> v = { correctAns, ans2, ans3, ans4 }; //put all the answers in a vector
+	std::random_shuffle(v.begin(), v.end()); //randomize the order
+	int i = 0;
+	for (std::vector<string>::iterator it = v.begin(); it != v.end(); ++it){
+		if (*it == correctAns){ //find the correct answer
 			_correctAnswerIndex = i;
+			it = v.end(); //after finding end loop
 		}
+		i++;
 	}
+	std::copy(v.begin(), v.end(), _answers);
 }
 
 

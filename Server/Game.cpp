@@ -1,31 +1,28 @@
 #include "Game.h"
+#include "Helper.h"
 
 bool Game::insertGameToDB(){
-	
+	_id = _db.insertNewGame();
+	return true;
 }
 
 void Game::initQuestionsFromDB(){
-	
+	_questions = _db.initQuestions(_questions_no);
 }
 
 string creat118Msg(Question* q){
 	string msg;
-	msg = "118";
-	char qSize[3] = { 0, 0, 0 };
-	qSize[2] = q->getQuestion().size() % 10;
-	qSize[1] = (q->getQuestion().size() % 100) / 10; // 245 % 100 = 45; 45 / 10 = 4;
-	qSize[0] = q->getQuestion().size() / 100;
-	msg = msg + qSize;
+	msg = "118" + Helper::getPaddedNumber(q->getQuestion().size(), 3);
 	string* ans = q->getAnswers();
 	for (int i = 0; i < 4; i++){
-		
+		msg = msg + Helper::getPaddedNumber(ans[i].size(), 3);
 	}
-
+	return msg;
 }
 
 void Game::sendQuestionToAllUsers(){
 	_currentTurnAnswers = 0;
-	string msg = creat118Msg(_questions[_currQuestionIndex]); //message 118
+	string msg = creat118Msg(_questions[_currQuestionIndex]);
 	for (unsigned int i = 0; i < _players.size(); i++){
 		try{
 			_players[i]->send(msg);
@@ -50,13 +47,20 @@ Game::Game(const vector<User*>& users, int questionsNo, DataBase& db) : _db(db){
 	}catch(exception e){
 		cout << e.what() << endl;
 	}
-	for (std::map<string, int>::iterator it = _results.begin(), int i = 0; i < _players.size(); it++, i++){
+	int i = 0;
+	for (std::map<string, int>::iterator it = _results.begin(); it != _results.end(); it++){
 		_results.insert(it, std::pair<string, int>(_players[i]->getUsername(), 0));
+		i++;
 	}
 }
 
 Game::~Game(){
-	///////////?
+	for (unsigned int i = 0; i < _questions.size(); i++){
+		delete(_questions[i]);
+	}
+	for (unsigned int i = 0; i < _players.size(); i++){
+		delete(_players[i]);
+	}
 }
 
 
@@ -64,15 +68,19 @@ void Game::sendFirstQuestion(){
 	sendQuestionToAllUsers();
 }
 
-string create121Msg(User* player){
-
+string create121Msg(vector<User*> players, int i, int score){
+	return "121" +
+		Helper::getPaddedNumber(players.size(), 1) + 
+		Helper::getPaddedNumber(players[i]->getUsername().size(),2) + 
+		players[i]->getUsername() + 
+		Helper::getPaddedNumber(score, 2);
 }
 
 void Game::handleFinishGame(){
 	_db.updateGameStatus(getId());
 	for (unsigned int i = 0; i < _players.size(); i++){
 		try{
-			_players[i]->send(create121Msg(_players[i]));
+			_players[i]->send(create121Msg(_players, i, _results[_players[i]->getUsername()]));
 			_players[i]->setGame(nullptr);
 		}
 		catch (exception e){
@@ -115,6 +123,7 @@ bool Game::handleAnswerFromUser(User* u, int answerNo, int time){
 		u->send("1200");
 	}
 	handleNextTurn();
+	return true; //??
 }
 
 bool Game::leaveGame(User* currUser){
@@ -132,5 +141,5 @@ bool Game::leaveGame(User* currUser){
 }
 
 int Game::getId(){
-	return 1; /////////////////////////////?
+	return _id;
 }

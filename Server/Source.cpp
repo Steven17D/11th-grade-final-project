@@ -29,7 +29,7 @@ int main(){
 			<< endl << "username: " << d.isUsernameValid(in) << endl;
 	} while (in != "0");
 	*/
-
+	string b;
 	DataBase* db = new DataBase();
 
 	return 0;

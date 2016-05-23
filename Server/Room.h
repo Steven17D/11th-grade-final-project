@@ -15,9 +15,9 @@ private:
 	string _name;
 	int _id;
 
-	string getUsersAsString(vector<User*> users, User* u);
+	string getUsersAsString(vector<User*> usersList, User* excludeUser);
 	void sendMessage(string msg);
-	void sendMessage(User* u, string msg);
+	void sendMessage(User* excludeUser, string msg);
 
 public:
 	Room(int id, User* admin, string name, int maxUsers, int questionNo, int questionTime);
