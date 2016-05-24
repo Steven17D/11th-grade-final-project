@@ -21,7 +21,7 @@ string creat118Msg(Question* q){
 }
 
 void Game::sendQuestionToAllUsers(){
-	_currentTurnAnswers = 0;
+	_currentTurnAnswers = 0;new
 	string msg = creat118Msg(_questions[_currQuestionIndex]);
 	for (unsigned int i = 0; i < _players.size(); i++){
 		try{
@@ -55,6 +55,7 @@ Game::Game(const vector<User*>& users, int questionsNo, DataBase& db) : _db(db){
 }
 
 Game::~Game(){
+
 	for (unsigned int i = 0; i < _questions.size(); i++){
 		delete(_questions[i]);
 	}
@@ -123,7 +124,12 @@ bool Game::handleAnswerFromUser(User* u, int answerNo, int time){
 		u->send("1200");
 	}
 	handleNextTurn();
-	return true; //??
+	if ((_questions_no == _currQuestionIndex + 1) && (_currentTurnAnswers == _players.size())){
+		return false;
+	}
+	else{
+		return true;
+	}
 }
 
 bool Game::leaveGame(User* currUser){

@@ -18,12 +18,11 @@ int DataBase::callbackPersonalStatus(void* NotUse, int argc, char** argv, char**
 }
 
 int DataBase::callbackUsersList(void* users, int argc, char** argv, char** azColName){
-	if (argc != 1){
-		vector<string> _users;
+	if (argc != 0){
+		vector<string>* _users = (vector<string>*)users;
 		for (int i = 0; i < argc; i++){
-			_users.push_back(string(argv[i]));
+			_users->push_back(string(argv[i]));
 		}
-		*(vector<string>*)users = _users;
 	}
 	return 0;
 }
@@ -42,16 +41,19 @@ DataBase::~DataBase(){
 
 
 bool DataBase::isUserExists(string username){
-	vector<string> users;
-	int rc = sqlite3_exec(_db, "SELECT username FROM t_users;", callbackUsersList, &users, &_zErrMsg);
+	vector<string>* users = new vector<string>;
+	int rc = sqlite3_exec(_db, "SELECT username FROM t_users;", callbackUsersList, users, &_zErrMsg);
 	if (rc != SQLITE_OK){
 		fprintf(stderr, "SQL error: %s\n", _zErrMsg);
 		sqlite3_free(_zErrMsg);
 	}
-	for (unsigned int i = 0; i < users.size(); i++){
-		cout << to_string(i + 1) << ": " + users[i] << endl;
+	auto it = find(users->begin(), users->end(), username);
+	if (it != users->end()){
+		return true;
 	}
-	return true;//??
+	else{
+		return false;
+	}
 }
 
 bool DataBase::addNewUser(string username, string password, string email){
@@ -75,26 +77,26 @@ bool DataBase::isUserAndPassMatch(string username, string password){
 
 
 vector<Question*> DataBase::initQuestions(int questionsNo){
-	return true;
+	
 }
 
 vector<string> DataBase::getBestScores(){
-	return true;
+	
 }
 
 vector<string> DataBase::getPersonalStatus(string username){
-	return true;
+	
 }
 
 
 int DataBase::insertNewGame(){
-	return 1;
+	
 }
 
 bool DataBase::updateGameStatus(int gameId){
-	return true;
+	
 }
 
 bool DataBase::addAnswerToPlayer(int gameId, string username, int questionId, string answer, bool isCorrect, int answerTime){
-	return true;
+	
 }

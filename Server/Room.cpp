@@ -2,7 +2,11 @@
 #include "Helper.h"
 
 string Room::getUsersAsString(vector<User*> usersList, User* excludeUser){
-	//for DEBUGING
+	string msg;
+	for (unsigned int i = 0; i < _users.size(); i++){
+		msg += _users[i]->getUsername() + " ";
+	}
+	return msg;
 }
 
 void Room::sendMessage(string msg){
@@ -37,23 +41,39 @@ Room::Room(int id, User* admin, string name, int maxUsers, int questionNo, int q
 
 bool Room::joinRoom(User* u){
 	if (_users.size() == _maxUsers){
-		u->send("1101");
+		u->send("1101"); //fail msg
 		return false;
 	}
 	else{
 		_users.push_back(u);
 		u->send("1100" + Helper::getPaddedNumber(_questionsNo, 2) + Helper::getPaddedNumber(_questionTime, 2));
-		//server send 108
+		sendMessage(getUsersListMessage());
 		return true;
 	}
 }
 
 void Room::leaveRoom(User* u){
-	
+	auto it = std::find(_users.begin(), _users.end(), u);
+	if (it != _users.end()){
+		_users.erase(it);
+		u->send("1120");
+		sendMessage(getUsersListMessage());
+	}
 }
 
 int Room::closeRoom(User* u){
-	return 1;
+	if (_admin == u){
+		sendMessage("116");
+		for (unsigned int i = 0; i < _users.size(); i++){
+			if (_users[i] != u){
+				_users[i]->clearRoom();
+			}
+		}
+		return _id;
+	}
+	else{
+		return -1;
+	}
 }
 
 
@@ -66,7 +86,7 @@ string Room::getUsersListMessage(){
 	for (unsigned int i = 0; i < _users.size(); i++){
 		msg += Helper::getPaddedNumber(_users[i]->getUsername().size(), 2) + _users[i]->getUsername();
 	}
-	return "";
+	return msg;
 }
 
 int Room::getQuestionsNo(){
