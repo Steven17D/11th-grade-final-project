@@ -25,14 +25,14 @@ int main(){
 		system("Pause");
 		return(1);
 	}
-	vector<string>* users = new vector<string>;
-	int rc = sqlite3_exec(db, "SELECT username FROM t_users;", callbackUserList, users, &zErrMsg);
+	vector<string> users;
+	int rc = sqlite3_exec(db, "SELECT username FROM t_users;", callbackUserList, &users, &zErrMsg);
 	if (rc != SQLITE_OK){
 		fprintf(stderr, "SQL error: %s\n", zErrMsg);
 		sqlite3_free(zErrMsg);
 	}
-	for (unsigned int i = 0; i < users->size(); i++){
-		cout << (*users)[i] << endl;
+	for (unsigned int i = 0; i < users.size(); i++){
+		cout << (users)[i] << endl;
 	}
 	sqlite3_close(db);
 	system("pause");

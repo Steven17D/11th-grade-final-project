@@ -15,6 +15,7 @@ private:
 	static int callbackBestScores(void*, int, char**, char**);
 	static int callbackPersonalStatus(void*, int, char**, char**);
 	static int callbackUsersList(void* users, int argc, char** argv, char** azColName);
+	static int callbackPassword(void* password, int argc, char** argv, char** azColName);
 
 public:
 	DataBase();

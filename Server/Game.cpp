@@ -21,7 +21,7 @@ string creat118Msg(Question* q){
 }
 
 void Game::sendQuestionToAllUsers(){
-	_currentTurnAnswers = 0;new
+	_currentTurnAnswers = 0;
 	string msg = creat118Msg(_questions[_currQuestionIndex]);
 	for (unsigned int i = 0; i < _players.size(); i++){
 		try{
