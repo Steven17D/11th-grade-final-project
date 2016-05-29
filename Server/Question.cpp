@@ -9,13 +9,11 @@ Question::Question(int id, string q, string correctAns, string ans2, string ans3
 	std::uniform_int_distribution<int> distribution(1, 4);
 	vector<string> v = { correctAns, ans2, ans3, ans4 }; //put all the answers in a vector
 	std::random_shuffle(v.begin(), v.end()); //randomize the order
-	int i = 0;
-	for (std::vector<string>::iterator it = v.begin(); it != v.end(); ++it){
-		if (*it == correctAns){ //find the correct answer
-			_correctAnswerIndex = i;
-			it = v.end(); //after finding end loop
+	for (unsigned int it = 0; it < v.size(); ++it){
+		if (v[it] == correctAns){ //find the correct answer
+			_correctAnswerIndex = it;
+			it = v.size(); //after finding end loop
 		}
-		i++;
 	}
 	std::copy(v.begin(), v.end(), _answers);
 }

@@ -2,11 +2,15 @@
 #define TRIVIASERVER_H_
 #include <iostream>
 #include <WinSock2.h>
+#include <Windows.h>
 #include <map>
 #include "DataBase.h"
 #include "User.h"
 #include <mutex>
 #include <queue>
+#include <thread>
+#include "Helper.h"
+#include "Validator.h"
 #include "RecievedMessage.h"
 using namespace std;
 class TriviaServer{
@@ -42,7 +46,7 @@ private:
 	void handleGetBestScores(RecievedMessage* r);
 	void handleGetPersonalStatus(RecievedMessage* r);
 
-	void hendleRecievedMessage();
+	void handleRecievedMessage();
 	void addRecievedMessage(RecievedMessage* r);
 	RecievedMessage* buildRecieveMessage(SOCKET s, int n);
 

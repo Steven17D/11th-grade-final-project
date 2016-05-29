@@ -7,7 +7,13 @@ int DataBase::callbackCount(void* NotUse, int argc, char** argv, char** azColNam
 }
 
 int DataBase::callbackQuestions(void* Questions, int argc, char** argv, char** azColName){
-	
+	if (argc != 0){
+		vector<Question*>* _users = (vector<Question*>*)Questions;
+		_users->push_back(new Question(atoi(argv[0]), argv[1], argv[2], argv[3], argv[4], argv[5]));
+		for (int i = 0; i < argc; i++){
+			cout << i << ": " << argv[i] << endl;
+		}
+	}
 	return 0;
 }
 
@@ -100,12 +106,18 @@ bool DataBase::isUserAndPassMatch(string username, string password){
 
 vector<Question*> DataBase::initQuestions(int questionsNo){
 	vector<Question*> q;
-	string sql = "SELECT";
+	string sql = "SELECT * FROM t_questions;";
 	int rc = sqlite3_exec(_db, sql.c_str(), callbackQuestions, &q, &_zErrMsg);
 	if (rc != SQLITE_OK){
 		fprintf(stderr, "SQL error: %s\n", _zErrMsg);
 		sqlite3_free(_zErrMsg);
 	}
+	for (unsigned int i = 0; i < q.size(); i++){
+		if (i >= questionsNo){
+			delete(q[i]);
+		}
+	}
+	q.resize(questionsNo);
 	return q;
 }
 
@@ -117,7 +129,12 @@ vector<string> DataBase::getBestScores(){
 
 vector<string> DataBase::getPersonalStatus(string username){
 	vector<string> s;
-
+	string sql = "SELECT _ FROM _ WHERE ;";
+	int rc = sqlite3_exec(_db, sql.c_str(), callbackPersonalStatus, &s, &_zErrMsg);
+	if (rc != SQLITE_OK){
+		fprintf(stderr, "SQL error: %s\n", _zErrMsg);
+		sqlite3_free(_zErrMsg);
+	}
 	return s;
 }
 
