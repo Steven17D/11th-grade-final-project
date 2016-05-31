@@ -9,6 +9,7 @@
 #include <mutex>
 #include <queue>
 #include <thread>
+#include <condition_variable>
 #include "Helper.h"
 #include "Validator.h"
 #include "RecievedMessage.h"
@@ -22,6 +23,8 @@ private:
 	mutex _mtxRecievedMessages;
 	queue<RecievedMessage*> _queRcvMessages;
 	static int _roomIdSequence;
+	unique_lock<mutex> _ul;
+	condition_variable _cv;
 
 	void bindAndListen();
 	void accept();

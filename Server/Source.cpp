@@ -19,18 +19,7 @@
 using namespace std;
 
 int main(){ 
-	/*	VALIDATOR CLASS TESTING everything works
-	string in;
-	Validator d;
-	do{
-		cout << "Enter: ";
-		getline(cin, in);
-		cout << endl << "password: " << d.isPasswordValid(in)
-			<< endl << "username: " << d.isUsernameValid(in) << endl;
-	} while (in != "0");
-	*/
-	string b;
-	DataBase* db = new DataBase();
-
+	TriviaServer t;
+	t.server();
 	return 0;
 }
