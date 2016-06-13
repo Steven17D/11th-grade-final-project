@@ -7,3 +7,24 @@ C:\Users\StevenD\Desktop\triviaProjectAdditionalFiles\Project\end-project\Client
 C:\Users\StevenD\Desktop\triviaProjectAdditionalFiles\Project\end-project\Client\obj\Debug\Client.exe
 C:\Users\StevenD\Desktop\triviaProjectAdditionalFiles\Project\end-project\Client\obj\Debug\Client.pdb
 C:\Users\StevenD\Desktop\triviaProjectAdditionalFiles\Project\end-project\Client\obj\Debug\Client.csprojResolveAssemblyReference.cache
+C:\Users\User\Documents\Magshimim\כיתה יא\Advanced Programming\End Project\THE project (Steven and Yaron)\End Project\Client\bin\Debug\Client.exe.config
+C:\Users\User\Documents\Magshimim\כיתה יא\Advanced Programming\End Project\THE project (Steven and Yaron)\End Project\Client\bin\Debug\Client.exe
+C:\Users\User\Documents\Magshimim\כיתה יא\Advanced Programming\End Project\THE project (Steven and Yaron)\End Project\Client\bin\Debug\Client.pdb
+C:\Users\User\Documents\Magshimim\כיתה יא\Advanced Programming\End Project\THE project (Steven and Yaron)\End Project\Client\obj\Debug\Client.csprojResolveAssemblyReference.cache
+C:\Users\User\Documents\Magshimim\כיתה יא\Advanced Programming\End Project\THE project (Steven and Yaron)\End Project\Client\obj\Debug\Client.Properties.Resources.resources
+C:\Users\User\Documents\Magshimim\כיתה יא\Advanced Programming\End Project\THE project (Steven and Yaron)\End Project\Client\obj\Debug\Client.csproj.GenerateResource.Cache
+C:\Users\User\Documents\Magshimim\כיתה יא\Advanced Programming\End Project\THE project (Steven and Yaron)\End Project\Client\obj\Debug\Client.exe
+C:\Users\User\Documents\Magshimim\כיתה יא\Advanced Programming\End Project\THE project (Steven and Yaron)\End Project\Client\obj\Debug\Client.pdb
+C:\Users\User\Documents\Magshimim\כיתה יא\Advanced Programming\End Project\THE project (Steven and Yaron)\End Project\Client\obj\Debug\Client.ConnectionFailed.resources
+C:\Users\User\Documents\Magshimim\כיתה יא\Advanced Programming\End Project\THE project (Steven and Yaron)\End Project\Client\obj\Debug\Client.Menu.resources
+C:\Users\StevenD\Desktop\Steven17D-end-project-3a28180d7d9d\Client\bin\Debug\Client.exe.config
+C:\Users\StevenD\Desktop\Steven17D-end-project-3a28180d7d9d\Client\obj\Debug\Client.exe
+C:\Users\StevenD\Desktop\Steven17D-end-project-3a28180d7d9d\Client\obj\Debug\Client.pdb
+C:\Users\StevenD\Desktop\Steven17D-end-project-3a28180d7d9d\Client\bin\Debug\Client.exe
+C:\Users\StevenD\Desktop\Steven17D-end-project-3a28180d7d9d\Client\bin\Debug\Client.pdb
+C:\Users\StevenD\Desktop\Steven17D-end-project-3a28180d7d9d\Client\obj\Debug\Client.csprojResolveAssemblyReference.cache
+C:\Users\StevenD\Desktop\Steven17D-end-project-3a28180d7d9d\Client\obj\Debug\Client.ConnectionFailed.resources
+C:\Users\StevenD\Desktop\Steven17D-end-project-3a28180d7d9d\Client\obj\Debug\Client.Menu.resources
+C:\Users\StevenD\Desktop\Steven17D-end-project-3a28180d7d9d\Client\obj\Debug\Client.Properties.Resources.resources
+C:\Users\StevenD\Desktop\Steven17D-end-project-3a28180d7d9d\Client\obj\Debug\Client.csproj.GenerateResource.Cache
+C:\Users\StevenD\Desktop\Steven17D-end-project-3a28180d7d9d\Client\obj\Debug\Client.SignUp.resources

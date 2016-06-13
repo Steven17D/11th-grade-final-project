@@ -1,14 +1,32 @@
 #include "TriviaServer.h"
-
-TriviaServer::TriviaServer() : _ul(_mtxRecievedMessages){
+int TriviaServer::_roomIdSequence = 0;
+TriviaServer::TriviaServer(){
+	this->_empty = true;
 	//db constrastor is automatically called and he will throw an exception if failed
 	//need to create new socket
-	_socket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
-	if (_socket == INVALID_SOCKET)
-	{
-		throw exception("Faild to create a socket."); //Couldn't create the socket
+	WSADATA wsaData;
+	int iResult;
+	iResult = WSAStartup(MAKEWORD(2, 2), &wsaData); // Initialize Winsock
+	if (iResult != 0) {
+		cout << "WSAStartup failed with error: " + iResult << endl;
+	}
+	cout << "Initialized Winsock" << endl;
+	// Create a SOCKET for connecting to server
+	try{
+		_socket = socket(AF_INET, SOCK_STREAM, 0);
+	}
+	catch (exception e){
+		cout << e.what() << endl;
+	}
+	if (_socket == INVALID_SOCKET) {
+		printf("socket failed with error: %ld\n", WSAGetLastError());
+		WSACleanup();
+	}
+	else{
+		cout << "Socket created" << endl;
 	}
 }
+
 TriviaServer::~TriviaServer(){
 	for (std::map<int, Room*>::iterator it = _roomList.begin(); it != _roomList.end(); ++it){
 		delete it->second;
@@ -21,8 +39,8 @@ TriviaServer::~TriviaServer(){
 
 void TriviaServer::server(){
 	bindAndListen();
-	//thread t(this->clientHandler, _socket);
-	//t.join();
+	thread handle_messages(&TriviaServer::handleRecievedMessage,this);
+	handle_messages.detach();
 	while (true){
 		this->accept();
 	}
@@ -35,29 +53,34 @@ void TriviaServer::bindAndListen(){
 		throw exception("WSAStartup failed with error: " + iResult);
 	}
 	addr.sin_family = AF_INET;      // Address family
-	addr.sin_port = htons(5656);
+	addr.sin_port = htons(600);
 	addr.sin_addr.s_addr = htonl(INADDR_ANY);
 	if (::bind(_socket, (LPSOCKADDR)&addr, sizeof(addr)) == SOCKET_ERROR){
 		//We couldn't bind (this will happen if you try to bind to the same  
 		//socket more than once)
 		throw exception("Failed to bind");
 	}
+	cout << "bind success" << endl;
 	if (listen(_socket, SOMAXCONN) < 0){
 		throw exception("Failed to listen");
+	}
+	else{
+		cout << "listening..." << endl;
 	}
 }
 void TriviaServer::accept(){
 	SOCKET acceptSock;
 	acceptSock = ::accept(_socket, NULL, NULL);
-	thread clientT(&TriviaServer::clientHandler, TriviaServer(), acceptSock);
-	clientT.join();
+	thread clientT(&TriviaServer::clientHandler, this, acceptSock);
+	clientT.detach();
+	cout << "thread is runnig" << endl;
 }
 void TriviaServer::clientHandler(SOCKET s){
+	cout << "client is being handled" << endl;
 	try{
 		int messageTypeCode = Helper::getMessageTypeCode(s);
 		if (messageTypeCode != 0 && messageTypeCode != 299){ //???????
-			addRecievedMessage(buildRecieveMessage(s, 0/*???????*/));
-			messageTypeCode = Helper::getMessageTypeCode(s);
+			addRecievedMessage(buildRecieveMessage(s, messageTypeCode));
 		}
 		addRecievedMessage(buildRecieveMessage(s, 299));
 	}
@@ -138,7 +161,18 @@ void TriviaServer::handleLeaveGame(RecievedMessage* r){
 }
 void TriviaServer::handleStartGame(RecievedMessage* r){
 	vector<User*> users = r->getUser()->getRoom()->getUsers(); //users int the room
-	//r->getUser()->getRoom()->
+	Room* adminRoom = r->getUser()->getRoom();
+	Game* g = nullptr;
+	try{
+		g = new Game(users, adminRoom->getQuestionsNo(), _db);
+	}
+	catch (exception e){
+		r->getUser()->send("1180"); //failed
+	}
+	_roomList.erase(_roomList.find(adminRoom->getId()));
+	if (g != nullptr)
+		g->sendFirstQuestion();
+
 }
 void TriviaServer::handlePlayerAnswer(RecievedMessage* r){
 	if (r->getUser()->getGame() != nullptr){
@@ -230,10 +264,10 @@ void TriviaServer::handleGetPersonalStatus(RecievedMessage* r){
 }
 
 void TriviaServer::handleRecievedMessage(){
-	_cv.wait(_ul);
-	_ul.lock();
+	while (_empty == true){
+
+	}
 	RecievedMessage* temp = _queRcvMessages.back();
-	_ul.unlock();//????????????????????????????
 	User* u = getUserBySocket(temp->getSock());
 	temp->setUser(u);
 	switch (temp->getMessageCode()){
@@ -246,12 +280,13 @@ void TriviaServer::handleRecievedMessage(){
 	default:
 		break;
 	}
+	if (_queRcvMessages.size() == 0){
+		_empty = true;
+	}
 }
 void TriviaServer::addRecievedMessage(RecievedMessage* r){
-	_mtxRecievedMessages.lock();
 	_queRcvMessages.push(r);
-	_mtxRecievedMessages.unlock();
-	_cv.notify_all();
+	_empty = false;
 }
 RecievedMessage* TriviaServer::buildRecieveMessage(SOCKET s, int msgCode){
 	vector <string> vals;
@@ -268,10 +303,12 @@ RecievedMessage* TriviaServer::buildRecieveMessage(SOCKET s, int msgCode){
 	case 200:
 		size = atoi(temp.substr(3, 2).c_str());
 		val = temp.substr(5, size);
+		cout << val << endl;
 		vals.push_back(val);
 		size = atoi(temp.substr(size + 5, 2).c_str());
 		val = temp.substr(5 + val.size() + 2, size);
 		vals.push_back(val);
+		cout << val << endl;
 		break;
 	case 201:
 		return new RecievedMessage(s, msgCode);

@@ -23,8 +23,7 @@ private:
 	mutex _mtxRecievedMessages;
 	queue<RecievedMessage*> _queRcvMessages;
 	static int _roomIdSequence;
-	unique_lock<mutex> _ul;
-	condition_variable _cv;
+	bool _empty;
 
 	void bindAndListen();
 	void accept();

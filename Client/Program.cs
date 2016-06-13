@@ -16,7 +16,18 @@ namespace Client
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            try
+            {
+                System.Net.Sockets.TcpClient clientSocket = new System.Net.Sockets.TcpClient();
+                clientSocket.Connect("127.0.0.1", 8820); //connect to localhost
+                Application.Run(new Menu(clientSocket));
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                Application.Run(new ConnectionFailed());
+            }
+
         }
     }
 }
