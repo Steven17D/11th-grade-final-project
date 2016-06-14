@@ -53,7 +53,7 @@ void TriviaServer::bindAndListen(){
 		throw exception("WSAStartup failed with error: " + iResult);
 	}
 	addr.sin_family = AF_INET;      // Address family
-	addr.sin_port = htons(600);
+	addr.sin_port = htons(8820);
 	addr.sin_addr.s_addr = htonl(INADDR_ANY);
 	if (::bind(_socket, (LPSOCKADDR)&addr, sizeof(addr)) == SOCKET_ERROR){
 		//We couldn't bind (this will happen if you try to bind to the same  

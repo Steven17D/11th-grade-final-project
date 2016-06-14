@@ -1,7 +1,6 @@
 C:\Users\StevenD\Desktop\triviaProjectAdditionalFiles\Project\end-project\Client\bin\Debug\Client.exe.config
 C:\Users\StevenD\Desktop\triviaProjectAdditionalFiles\Project\end-project\Client\bin\Debug\Client.exe
 C:\Users\StevenD\Desktop\triviaProjectAdditionalFiles\Project\end-project\Client\bin\Debug\Client.pdb
-C:\Users\StevenD\Desktop\triviaProjectAdditionalFiles\Project\end-project\Client\obj\Debug\Client.Form1.resources
 C:\Users\StevenD\Desktop\triviaProjectAdditionalFiles\Project\end-project\Client\obj\Debug\Client.Properties.Resources.resources
 C:\Users\StevenD\Desktop\triviaProjectAdditionalFiles\Project\end-project\Client\obj\Debug\Client.csproj.GenerateResource.Cache
 C:\Users\StevenD\Desktop\triviaProjectAdditionalFiles\Project\end-project\Client\obj\Debug\Client.exe
@@ -28,3 +27,7 @@ C:\Users\StevenD\Desktop\Steven17D-end-project-3a28180d7d9d\Client\obj\Debug\Cli
 C:\Users\StevenD\Desktop\Steven17D-end-project-3a28180d7d9d\Client\obj\Debug\Client.Properties.Resources.resources
 C:\Users\StevenD\Desktop\Steven17D-end-project-3a28180d7d9d\Client\obj\Debug\Client.csproj.GenerateResource.Cache
 C:\Users\StevenD\Desktop\Steven17D-end-project-3a28180d7d9d\Client\obj\Debug\Client.SignUp.resources
+C:\Users\StevenD\Desktop\triviaProjectAdditionalFiles\Project\end-project\Client\obj\Debug\Client.ConnectionFailed.resources
+C:\Users\StevenD\Desktop\triviaProjectAdditionalFiles\Project\end-project\Client\obj\Debug\Client.Menu.resources
+C:\Users\StevenD\Desktop\triviaProjectAdditionalFiles\Project\end-project\Client\obj\Debug\Client.SignUp.resources
+C:\Users\StevenD\Desktop\triviaProjectAdditionalFiles\Project\end-project\Client\obj\Debug\Client.RoomSelect.resources

@@ -44,7 +44,7 @@
             // passwordBox
             // 
             this.passwordBox.Location = new System.Drawing.Point(116, 129);
-            this.passwordBox.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.passwordBox.Margin = new System.Windows.Forms.Padding(5);
             this.passwordBox.Name = "passwordBox";
             this.passwordBox.Size = new System.Drawing.Size(238, 23);
             this.passwordBox.TabIndex = 17;
@@ -52,7 +52,7 @@
             // userNameBox
             // 
             this.userNameBox.Location = new System.Drawing.Point(116, 95);
-            this.userNameBox.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.userNameBox.Margin = new System.Windows.Forms.Padding(5);
             this.userNameBox.Name = "userNameBox";
             this.userNameBox.Size = new System.Drawing.Size(238, 23);
             this.userNameBox.TabIndex = 16;
@@ -83,7 +83,7 @@
             // 
             this.SignIn.Font = new System.Drawing.Font("Comic Sans MS", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SignIn.Location = new System.Drawing.Point(14, 197);
-            this.SignIn.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.SignIn.Margin = new System.Windows.Forms.Padding(5);
             this.SignIn.Name = "SignIn";
             this.SignIn.Size = new System.Drawing.Size(340, 65);
             this.SignIn.TabIndex = 13;
@@ -95,7 +95,7 @@
             // 
             this.pictureBox1.Image = global::Client.Properties.Resources.Trivia;
             this.pictureBox1.Location = new System.Drawing.Point(14, 15);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(5);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(355, 64);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -116,7 +116,7 @@
             // emailBox
             // 
             this.emailBox.Location = new System.Drawing.Point(116, 164);
-            this.emailBox.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.emailBox.Margin = new System.Windows.Forms.Padding(5);
             this.emailBox.Name = "emailBox";
             this.emailBox.Size = new System.Drawing.Size(238, 23);
             this.emailBox.TabIndex = 17;
@@ -161,6 +161,7 @@
             this.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "SignUp";
             this.Text = "SignUp";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SignUp_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

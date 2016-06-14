@@ -14,6 +14,8 @@ namespace Client
     public partial class Menu : Form
     {
         System.Net.Sockets.TcpClient clientSocket;
+
+        public void msg(string mesg) { MessageBox.Show(mesg); }
         public Menu(System.Net.Sockets.TcpClient clientSocket_)
         {
             InitializeComponent();
@@ -62,6 +64,12 @@ namespace Client
                         CreateRoom.Enabled = true;
                         MyStatus.Enabled = true;
                         BestScores.Enabled = true;
+                        JoinRoom.Show();
+                        CreateRoom.Show();
+                        MyStatus.Show();
+                        BestScores.Show();
+                        msgToUser.Text = "";
+                        msgToUser.Visible = false;
                         break;
                     case "1021":
                         //Wrong Details
@@ -91,10 +99,14 @@ namespace Client
                 msg(exc.Message);
             }
         }
-        public void msg(string mesg){MessageBox.Show(mesg);}
 
         private void Quit_Click(object sender, EventArgs e)
         {
+            string exitMsg = "299";
+            NetworkStream serverStream = clientSocket.GetStream();
+            byte[] outStream = System.Text.Encoding.ASCII.GetBytes(exitMsg);
+            serverStream.Write(outStream, 0, outStream.Length);
+            serverStream.Flush();
             Application.Exit();
         }
 
@@ -128,10 +140,26 @@ namespace Client
 
         private void Menu_Load(object sender, EventArgs e)
         {
-            JoinRoom.Enabled = false;
-            CreateRoom.Enabled = false;
-            MyStatus.Enabled = false;
-            BestScores.Enabled = false;
+            JoinRoom.Hide();
+            CreateRoom.Hide();
+            MyStatus.Hide();
+            BestScores.Hide();
+        }
+
+        private void JoinRoom_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form SignUpForm = new RoomSelect(clientSocket, this);
+            SignUpForm.Show();
+        }
+
+        private void Menu_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            string exitMsg = "299";
+            NetworkStream serverStream = clientSocket.GetStream();
+            byte[] outStream = System.Text.Encoding.ASCII.GetBytes(exitMsg);
+            serverStream.Write(outStream, 0, outStream.Length);
+            serverStream.Flush();
         } 
     }
 }

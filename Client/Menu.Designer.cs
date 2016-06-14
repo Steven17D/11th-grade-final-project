@@ -69,6 +69,7 @@
             this.JoinRoom.TabIndex = 1;
             this.JoinRoom.Text = "Join room";
             this.JoinRoom.UseVisualStyleBackColor = true;
+            this.JoinRoom.Click += new System.EventHandler(this.JoinRoom_Click);
             // 
             // CreateRoom
             // 
@@ -163,6 +164,7 @@
             // GreetingsLable
             // 
             this.GreetingsLable.Font = new System.Drawing.Font("Comic Sans MS", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GreetingsLable.ForeColor = System.Drawing.SystemColors.Menu;
             this.GreetingsLable.Location = new System.Drawing.Point(12, 66);
             this.GreetingsLable.Name = "GreetingsLable";
             this.GreetingsLable.Size = new System.Drawing.Size(760, 68);
@@ -238,6 +240,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Menu";
             this.Text = "Menu";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Menu_FormClosing);
             this.Load += new System.EventHandler(this.Menu_Load);
             ((System.ComponentModel.ISupportInitialize)(this.TriviaLogoLeft)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TriviaLogoRight)).EndInit();

@@ -83,5 +83,10 @@ namespace Client
             this.Close();
             parent.Show();
         }
+
+        private void SignUp_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            parent.Show();
+        }
     }
 }
