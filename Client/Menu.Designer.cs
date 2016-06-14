@@ -152,6 +152,7 @@
             this.userNameBox.Name = "userNameBox";
             this.userNameBox.Size = new System.Drawing.Size(248, 30);
             this.userNameBox.TabIndex = 10;
+            this.userNameBox.Text = "erez";
             // 
             // passwordBox
             // 
@@ -160,6 +161,7 @@
             this.passwordBox.Name = "passwordBox";
             this.passwordBox.Size = new System.Drawing.Size(248, 30);
             this.passwordBox.TabIndex = 11;
+            this.passwordBox.Text = "qwe123";
             // 
             // GreetingsLable
             // 

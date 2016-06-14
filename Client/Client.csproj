@@ -70,6 +70,12 @@
     <Compile Include="SignUp.Designer.cs">
       <DependentUpon>SignUp.cs</DependentUpon>
     </Compile>
+    <Compile Include="WaitForGame.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WaitForGame.Designer.cs">
+      <DependentUpon>WaitForGame.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="ConnectionFailed.resx">
       <DependentUpon>ConnectionFailed.cs</DependentUpon>
     </EmbeddedResource>
@@ -91,6 +97,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SignUp.resx">
       <DependentUpon>SignUp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WaitForGame.resx">
+      <DependentUpon>WaitForGame.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

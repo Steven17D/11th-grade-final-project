@@ -28,30 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.passwordBox = new System.Windows.Forms.TextBox();
+            this.emailBox = new System.Windows.Forms.TextBox();
             this.userNameBox = new System.Windows.Forms.TextBox();
             this.PasswordLable = new System.Windows.Forms.Label();
             this.UserNameLable = new System.Windows.Forms.Label();
             this.SignIn = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.EmailLable = new System.Windows.Forms.Label();
-            this.emailBox = new System.Windows.Forms.TextBox();
+            this.passwordBox = new System.Windows.Forms.TextBox();
             this.MsgToUser = new System.Windows.Forms.Label();
             this.backB = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // passwordBox
+            // emailBox
             // 
-            this.passwordBox.Location = new System.Drawing.Point(116, 129);
-            this.passwordBox.Margin = new System.Windows.Forms.Padding(5);
-            this.passwordBox.Name = "passwordBox";
-            this.passwordBox.Size = new System.Drawing.Size(238, 23);
-            this.passwordBox.TabIndex = 17;
+            this.emailBox.Location = new System.Drawing.Point(116, 162);
+            this.emailBox.Margin = new System.Windows.Forms.Padding(5);
+            this.emailBox.Name = "emailBox";
+            this.emailBox.Size = new System.Drawing.Size(238, 23);
+            this.emailBox.TabIndex = 17;
             // 
             // userNameBox
             // 
-            this.userNameBox.Location = new System.Drawing.Point(116, 95);
+            this.userNameBox.Location = new System.Drawing.Point(115, 93);
             this.userNameBox.Margin = new System.Windows.Forms.Padding(5);
             this.userNameBox.Name = "userNameBox";
             this.userNameBox.Size = new System.Drawing.Size(238, 23);
@@ -61,6 +61,7 @@
             // 
             this.PasswordLable.AutoSize = true;
             this.PasswordLable.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PasswordLable.ForeColor = System.Drawing.Color.Chartreuse;
             this.PasswordLable.Location = new System.Drawing.Point(26, 127);
             this.PasswordLable.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.PasswordLable.Name = "PasswordLable";
@@ -72,6 +73,7 @@
             // 
             this.UserNameLable.AutoSize = true;
             this.UserNameLable.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UserNameLable.ForeColor = System.Drawing.Color.Chartreuse;
             this.UserNameLable.Location = new System.Drawing.Point(14, 93);
             this.UserNameLable.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.UserNameLable.Name = "UserNameLable";
@@ -82,10 +84,10 @@
             // SignIn
             // 
             this.SignIn.Font = new System.Drawing.Font("Comic Sans MS", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SignIn.Location = new System.Drawing.Point(14, 197);
+            this.SignIn.Location = new System.Drawing.Point(115, 197);
             this.SignIn.Margin = new System.Windows.Forms.Padding(5);
             this.SignIn.Name = "SignIn";
-            this.SignIn.Size = new System.Drawing.Size(340, 65);
+            this.SignIn.Size = new System.Drawing.Size(239, 66);
             this.SignIn.TabIndex = 13;
             this.SignIn.Text = "Sign up";
             this.SignIn.UseVisualStyleBackColor = true;
@@ -106,6 +108,7 @@
             // 
             this.EmailLable.AutoSize = true;
             this.EmailLable.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EmailLable.ForeColor = System.Drawing.Color.Chartreuse;
             this.EmailLable.Location = new System.Drawing.Point(57, 162);
             this.EmailLable.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.EmailLable.Name = "EmailLable";
@@ -113,13 +116,13 @@
             this.EmailLable.TabIndex = 15;
             this.EmailLable.Text = "Email";
             // 
-            // emailBox
+            // passwordBox
             // 
-            this.emailBox.Location = new System.Drawing.Point(116, 164);
-            this.emailBox.Margin = new System.Windows.Forms.Padding(5);
-            this.emailBox.Name = "emailBox";
-            this.emailBox.Size = new System.Drawing.Size(238, 23);
-            this.emailBox.TabIndex = 17;
+            this.passwordBox.Location = new System.Drawing.Point(115, 127);
+            this.passwordBox.Margin = new System.Windows.Forms.Padding(5);
+            this.passwordBox.Name = "passwordBox";
+            this.passwordBox.Size = new System.Drawing.Size(238, 23);
+            this.passwordBox.TabIndex = 17;
             // 
             // MsgToUser
             // 
@@ -147,11 +150,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(383, 306);
             this.Controls.Add(this.backB);
             this.Controls.Add(this.MsgToUser);
-            this.Controls.Add(this.emailBox);
             this.Controls.Add(this.passwordBox);
+            this.Controls.Add(this.emailBox);
             this.Controls.Add(this.EmailLable);
             this.Controls.Add(this.userNameBox);
             this.Controls.Add(this.PasswordLable);
@@ -170,14 +174,14 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox passwordBox;
+        private System.Windows.Forms.TextBox emailBox;
         private System.Windows.Forms.TextBox userNameBox;
         private System.Windows.Forms.Label PasswordLable;
         private System.Windows.Forms.Label UserNameLable;
         private System.Windows.Forms.Button SignIn;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label EmailLable;
-        private System.Windows.Forms.TextBox emailBox;
+        private System.Windows.Forms.TextBox passwordBox;
         private System.Windows.Forms.Label MsgToUser;
         private System.Windows.Forms.Button backB;
 

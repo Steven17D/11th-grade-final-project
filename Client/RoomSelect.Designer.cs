@@ -87,6 +87,7 @@
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Chartreuse;
             this.label1.Location = new System.Drawing.Point(19, 145);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(749, 32);
@@ -102,10 +103,12 @@
             this.roomList.Name = "roomList";
             this.roomList.Size = new System.Drawing.Size(414, 118);
             this.roomList.TabIndex = 24;
+            this.roomList.SelectedValueChanged += new System.EventHandler(this.roomList_SelectedValueChanged);
             // 
             // roomPlayersLable
             // 
             this.roomPlayersLable.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.roomPlayersLable.ForeColor = System.Drawing.Color.Chartreuse;
             this.roomPlayersLable.Location = new System.Drawing.Point(19, 304);
             this.roomPlayersLable.Name = "roomPlayersLable";
             this.roomPlayersLable.Size = new System.Drawing.Size(749, 32);
@@ -126,6 +129,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.roomPlayers);
             this.Controls.Add(this.roomList);
@@ -139,6 +143,8 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "RoomSelect";
             this.Text = "RoomSelect";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RoomSelect_FormClosing);
+            this.Load += new System.EventHandler(this.RoomSelect_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).EndInit();
             this.ResumeLayout(false);
 
