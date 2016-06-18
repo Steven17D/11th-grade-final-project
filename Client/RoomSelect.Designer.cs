@@ -36,6 +36,7 @@
             this.roomList = new System.Windows.Forms.ListBox();
             this.roomPlayersLable = new System.Windows.Forms.Label();
             this.roomPlayers = new System.Windows.Forms.ListBox();
+            this.msgToUser = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -75,7 +76,7 @@
             // 
             // refreshB
             // 
-            this.refreshB.Location = new System.Drawing.Point(397, 512);
+            this.refreshB.Location = new System.Drawing.Point(397, 510);
             this.refreshB.Margin = new System.Windows.Forms.Padding(4);
             this.refreshB.Name = "refreshB";
             this.refreshB.Size = new System.Drawing.Size(203, 37);
@@ -125,12 +126,21 @@
             this.roomPlayers.Size = new System.Drawing.Size(414, 137);
             this.roomPlayers.TabIndex = 24;
             // 
+            // msgToUser
+            // 
+            this.msgToUser.ForeColor = System.Drawing.Color.Red;
+            this.msgToUser.Location = new System.Drawing.Point(12, 9);
+            this.msgToUser.Name = "msgToUser";
+            this.msgToUser.Size = new System.Drawing.Size(160, 36);
+            this.msgToUser.TabIndex = 25;
+            // 
             // RoomSelect
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.msgToUser);
             this.Controls.Add(this.roomPlayers);
             this.Controls.Add(this.roomList);
             this.Controls.Add(this.roomPlayersLable);
@@ -160,6 +170,7 @@
         private System.Windows.Forms.ListBox roomList;
         private System.Windows.Forms.Label roomPlayersLable;
         private System.Windows.Forms.ListBox roomPlayers;
+        private System.Windows.Forms.Label msgToUser;
 
     }
 }

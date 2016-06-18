@@ -135,6 +135,10 @@ namespace Client
                 passwordBox.Show();
                 SignIn.Show();
                 GreetingsLable.Visible = false;
+                JoinRoom.Hide();
+                CreateRoom.Hide();
+                MyStatus.Hide();
+                BestScores.Hide();
             }
         }
 
@@ -160,6 +164,27 @@ namespace Client
             byte[] outStream = System.Text.Encoding.ASCII.GetBytes(exitMsg);
             serverStream.Write(outStream, 0, outStream.Length);
             serverStream.Flush();
+        }
+
+        private void MyStatus_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form myStatusForm = new MyStatus(clientSocket, this);
+            myStatusForm.Show();
+        }
+
+        private void BestScores_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form myStatusForm = new BestScores(clientSocket, this);
+            myStatusForm.Show();
+        }
+
+        private void CreateRoom_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form myStatusForm = new RoomCreate(clientSocket, this);
+            myStatusForm.Show();
         } 
     }
 }

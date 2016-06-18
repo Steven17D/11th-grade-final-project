@@ -20,6 +20,7 @@ namespace Client
             {
                 System.Net.Sockets.TcpClient clientSocket = new System.Net.Sockets.TcpClient();
                 clientSocket.Connect("127.0.0.1", 8820); //connect to localhost
+                //clientSocket.Connect("10.200.201.74", 8820); 
                 Application.Run(new Menu(clientSocket));
             }
             catch (Exception e)

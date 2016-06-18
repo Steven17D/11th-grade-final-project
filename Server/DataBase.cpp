@@ -123,7 +123,7 @@ vector<Question*> DataBase::initQuestions(int questionsNo){
 
 vector<string> DataBase::getBestScores(){
 	vector<string> s;
-
+	//SELECT username FROM t_players_answers GROUP BY username ORDER BY  COUNT(*) DESC LIMIT 3;
 	return s;
 }
 

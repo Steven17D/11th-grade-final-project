@@ -15,11 +15,13 @@ namespace Client
     {
         System.Net.Sockets.TcpClient clientSocket;
         Form parent;
+        bool joinedToRoom;
         public RoomSelect(System.Net.Sockets.TcpClient clientSocket_, Form parent_)
         {
             InitializeComponent();
             clientSocket = clientSocket_;
             parent = parent_;
+            joinedToRoom = false;
         }
 
         private void joinB_Click(object sender, EventArgs e)
@@ -39,18 +41,27 @@ namespace Client
             {
                 case "1100":
                     //success
-                    this.Hide();
-                    Form SignUpForm = new WaitForGame(clientSocket, this,"roomName");
-                    SignUpForm.Show();
+                    joinedToRoom = true;
+                    this.Close();
+                    inStream = new byte[4]; //2 byte of questionsNumber and 2 byte of questionTimeInSec
+                    serverStream.Read(inStream, 0, 4);
+                    returndata = System.Text.Encoding.ASCII.GetString(inStream);
+                    Form waitForGameForm = new WaitForGame(clientSocket, parent,
+                        roomList.SelectedItem.ToString().Substring(27), false,
+                        int.Parse(returndata.Substring(0, 2)), int.Parse(returndata.Substring(2,2)));
+                    waitForGameForm.Show();
                     break;
                 case "1101":
                     // failed - room is full
+                    msgToUser.Text = "failed - room is full";
                     break;
                 case "1102":
                     //failed - room not exist or other reason
+                    msgToUser.Text = "failed - room not exist or other reason";
                     break;
                 default:
                     //unknown
+                    msgToUser.Text = "Unknown code";
                     break;
             }
         }
@@ -89,6 +100,8 @@ namespace Client
                     roomList.Items.Add(roomDis);
                 }
             }
+
+            roomPlayers.Items.Clear();
         }
 
         private void backB_Click(object sender, EventArgs e)
@@ -133,11 +146,13 @@ namespace Client
 
         private void RoomSelect_FormClosing(object sender, FormClosingEventArgs e)
         {
-            parent.Show();
+            if (!joinedToRoom)
+                parent.Show();
         }
 
         private void roomList_SelectedValueChanged(object sender, EventArgs e)
         {
+            if (roomList.SelectedItem == null) { return; } //if selected empty Item
             roomPlayers.Items.Clear();
             string selectedRoomId = roomList.SelectedItem.ToString().Substring(9, 4);
             string getPlayersMsg = "207" + selectedRoomId;

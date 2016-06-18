@@ -80,6 +80,7 @@
             this.CreateRoom.TabIndex = 2;
             this.CreateRoom.Text = "Create room";
             this.CreateRoom.UseVisualStyleBackColor = true;
+            this.CreateRoom.Click += new System.EventHandler(this.CreateRoom_Click);
             // 
             // MyStatus
             // 
@@ -90,6 +91,7 @@
             this.MyStatus.TabIndex = 3;
             this.MyStatus.Text = "My status";
             this.MyStatus.UseVisualStyleBackColor = true;
+            this.MyStatus.Click += new System.EventHandler(this.MyStatus_Click);
             // 
             // BestScores
             // 
@@ -100,6 +102,7 @@
             this.BestScores.TabIndex = 4;
             this.BestScores.Text = "Best scores";
             this.BestScores.UseVisualStyleBackColor = true;
+            this.BestScores.Click += new System.EventHandler(this.BestScores_Click);
             // 
             // Quit
             // 
