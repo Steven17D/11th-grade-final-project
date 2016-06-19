@@ -1,5 +1,7 @@
 #include "DataBase.h"
+
 #include <sstream>
+#include <time.h>
 
 int DataBase::callbackCount(void* NotUse, int argc, char** argv, char** azColName){
 	
@@ -10,9 +12,6 @@ int DataBase::callbackQuestions(void* Questions, int argc, char** argv, char** a
 	if (argc != 0){
 		vector<Question*>* _users = (vector<Question*>*)Questions;
 		_users->push_back(new Question(atoi(argv[0]), argv[1], argv[2], argv[3], argv[4], argv[5]));
-		for (int i = 0; i < argc; i++){
-			cout << i << ": " << argv[i] << endl;
-		}
 	}
 	return 0;
 }
@@ -46,7 +45,7 @@ int DataBase::callbackPassword(void* password, int argc, char** argv, char** azC
 
 
 DataBase::DataBase(){
-	int rc = sqlite3_open("test.db", &_db);
+	int rc = sqlite3_open("trivia.db", &_db);
 	if (rc){
 		throw exception(sqlite3_errmsg(_db));
 	}
@@ -123,7 +122,7 @@ vector<Question*> DataBase::initQuestions(int questionsNo){
 
 vector<string> DataBase::getBestScores(){
 	vector<string> s;
-	//SELECT username FROM t_players_answers GROUP BY username ORDER BY  COUNT(*) DESC LIMIT 3;
+
 	return s;
 }
 
@@ -138,15 +137,56 @@ vector<string> DataBase::getPersonalStatus(string username){
 	return s;
 }
 
+const string currentDateTime() {
+	time_t     now = time(0);
+	struct tm  tstruct;
+	char       buf[80];
+	localtime_s(&tstruct,&now);
+	strftime(buf, sizeof(buf), "%Y-%m-%d.%X", &tstruct);
 
+	return buf;
+}
 int DataBase::insertNewGame(){
-	return 0;
+	string status = "0";
+	string curt = currentDateTime();
+	string sql = "INSERT INTO t_games (status,start_time,end_time) VALUES ('" + status + "','" + curt + "','" + "NULL" + "');";
+	int rc = sqlite3_exec(_db, sql.c_str(), NULL, NULL, &_zErrMsg);
+	if (rc != SQLITE_OK){
+		fprintf(stderr, "SQL error: %s\n", _zErrMsg);
+		sqlite3_free(_zErrMsg);
+		return false;
+	}
+	int id;
+	sql = "SELECT game_id FROM t_games WHERE start_time = " + curt + ";";
+	rc = sqlite3_exec(_db, sql.c_str(), callbackPassword, &id, &_zErrMsg);
+	if (rc != SQLITE_OK){
+		fprintf(stderr, "SQL error: %s\n", _zErrMsg);
+		sqlite3_free(_zErrMsg);
+		return false;
+	}
+	return id;
 }
 
 bool DataBase::updateGameStatus(int gameId){
+	string sql = "UPDATE t_games SET status = '1' WHERE game_id = " + to_string(gameId) + ";";
+	int rc = sqlite3_exec(_db, sql.c_str(), NULL, NULL, &_zErrMsg);
+	if (rc != SQLITE_OK){
+		fprintf(stderr, "SQL error: %s\n", _zErrMsg);
+		sqlite3_free(_zErrMsg);
+		return false;
+	}
 	return true;
 }
 
 bool DataBase::addAnswerToPlayer(int gameId, string username, int questionId, string answer, bool isCorrect, int answerTime){
+	time_t result = time(nullptr);
+	string time = currentDateTime();
+	string sql = "INSERT INTO t_players_answers (game_id ,username ,question_id ,player_answer ,is_correct ,answer_time ) VALUES ('" + to_string(gameId) + "','" + username + "','" + to_string(questionId) + "','" + answer + "','" + to_string(isCorrect) + "','" + to_string(answerTime) + "');";
+	int rc = sqlite3_exec(_db, sql.c_str(), NULL, NULL, &_zErrMsg);
+	if (rc != SQLITE_OK){
+		fprintf(stderr, "SQL error: %s\n", _zErrMsg);
+		sqlite3_free(_zErrMsg);
+		return false;
+	}
 	return true;
 }

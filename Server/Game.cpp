@@ -14,8 +14,10 @@ string creat118Msg(Question* q){
 	string msg;
 	msg = "118" + Helper::getPaddedNumber(q->getQuestion().size(), 3);
 	string* ans = q->getAnswers();
+	msg += q->getQuestion();
 	for (int i = 0; i < 4; i++){
 		msg = msg + Helper::getPaddedNumber(ans[i].size(), 3);
+		msg += ans[i];
 	}
 	return msg;
 }
