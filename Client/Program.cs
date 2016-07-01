@@ -25,7 +25,7 @@ namespace Client
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message);
+                //MessageBox.Show(e.Message);
                 Application.Run(new ConnectionFailed());
             }
 

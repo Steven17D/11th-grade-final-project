@@ -71,19 +71,25 @@ void Game::sendFirstQuestion(){
 	sendQuestionToAllUsers();
 }
 
-string create121Msg(vector<User*> players, int i, int score){
-	return "121" +
-		Helper::getPaddedNumber(players.size(), 1) + 
+/*string create121Msg(vector<User*> players, int score){
+	string msg = "121" + Helper::getPaddedNumber(players.size(), 1);
+	for (int i = 0; i < players.size(); i++){
+		msg += 
+	}
 		Helper::getPaddedNumber(players[i]->getUsername().size(),2) + 
 		players[i]->getUsername() + 
 		Helper::getPaddedNumber(score, 2);
-}
+}*/
 
 void Game::handleFinishGame(){
 	_db.updateGameStatus(getId());
-	for (unsigned int i = 0; i < _players.size(); i++){
+	string msg = "121" + Helper::getPaddedNumber(_players.size(), 1);
+	for (int i = 0; i < _players.size(); i++){
+		msg += Helper::getPaddedNumber(_players[i]->getUsername().size(), 2) + _players[i]->getUsername() + Helper::getPaddedNumber(_results[_players[i]->getUsername()], 2);
+	}
+	for (unsigned int i = 0; i < _players.size(); i++){ 
 		try{
-			_players[i]->send(create121Msg(_players, i, _results[_players[i]->getUsername()]));
+			_players[i]->send(msg);
 			_players[i]->setGame(nullptr);
 		}
 		catch (exception e){

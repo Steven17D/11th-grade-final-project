@@ -19,6 +19,7 @@ namespace Client
         bool waitingForStart;
         bool isAdmin;
         bool gameStarted;
+        Thread listUpdater;
         int questionsNumber , questionTimeInSec;
         public WaitForGame(System.Net.Sockets.TcpClient clientSocket_, Form menu_, string roomName_, bool isAdmin_,int questionsNumber_ ,int questionTimeInSec_)
         {
@@ -61,7 +62,7 @@ namespace Client
                 }
             }
 
-            Thread listUpdater = new Thread(() => listUpdate(clientSocket));
+            listUpdater = new Thread(() => listUpdate());
             listUpdater.Start();
         }
 
@@ -79,11 +80,11 @@ namespace Client
             isAdmin = isAdmin_;
             leaveCloseB.Text = "Close Room";
 
-            Thread listUpdater = new Thread(() => listUpdate(clientSocket));
+            listUpdater = new Thread(() => listUpdate());
             listUpdater.Start();
         }
 
-        private void listUpdate(System.Net.Sockets.TcpClient _clientSocket)
+        private void listUpdate()
         {
             while (waitingForStart)
             {
@@ -141,29 +142,19 @@ namespace Client
 
         private void WaitForGame_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (isAdmin)
-            {
-                string joinMsg = "215";
-                NetworkStream serverStream = clientSocket.GetStream();
-                byte[] outStream = System.Text.Encoding.ASCII.GetBytes(joinMsg);
-                serverStream.Write(outStream, 0, outStream.Length);
-                serverStream.Flush();
-            }
-            else
-            {
-                string joinMsg = "211";
-                NetworkStream serverStream = clientSocket.GetStream();
-                byte[] outStream = System.Text.Encoding.ASCII.GetBytes(joinMsg);
-                serverStream.Write(outStream, 0, outStream.Length);
-                serverStream.Flush();
-            }
             waitingForStart = false;
+            if (listUpdater.IsAlive)
+            {
+                listUpdater.Abort();
+            }
             if(!gameStarted)
                 menu.Show();
         }
 
         private void leaveCloseB_Click(object sender, EventArgs e)
         {
+            waitingForStart = false;
+            listUpdater.Abort();
             if (leaveCloseB.Text == "Leave Room") //guest case
             {
                 string joinMsg = "211";
@@ -172,8 +163,9 @@ namespace Client
                 serverStream.Write(outStream, 0, outStream.Length);
                 serverStream.Flush();
 
-                waitingForStart = false;
-                
+                byte[] inStream = new byte[4]; //msg 1120
+                serverStream.Read(inStream, 0,4); //just clear the buffer
+
                 this.Close();
             }
             else if (leaveCloseB.Text == "Close Room")
@@ -183,8 +175,6 @@ namespace Client
                 byte[] outStream = System.Text.Encoding.ASCII.GetBytes(joinMsg);
                 serverStream.Write(outStream, 0, outStream.Length);
                 serverStream.Flush();
-
-                waitingForStart = false;
 
                 this.Close();
             }
@@ -201,10 +191,24 @@ namespace Client
 
         private void startGame_Click(object sender, EventArgs e)
         {
-            gameStarted = true;
-            Form GameForm = new Game(clientSocket, menu, false, questionsNumber, questionTimeInSec);
-            GameForm.Show();
-            this.Close();
+            string startMsg = "217";
+            NetworkStream serverStream = clientSocket.GetStream();
+            byte[] outStream = System.Text.Encoding.ASCII.GetBytes(startMsg);
+            serverStream.Write(outStream, 0, outStream.Length);
+            serverStream.Flush();
+
+            //byte[] inStream = new byte[3]; //msg 118
+            //serverStream.Read(inStream, 0, 3);
+            //string returndata = System.Text.Encoding.ASCII.GetString(inStream);
+            //if (returndata == "118")
+            //{
+            //    gameStarted = true;
+            //    waitingForStart = false;
+            //    Form GameForm = new Game(clientSocket, menu, true, questionsNumber, questionTimeInSec);
+            //    GameForm.Show();
+            //    this.Close();
+            //}
+            
         }
     }
 }

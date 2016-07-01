@@ -4,6 +4,7 @@
 #include <vector>
 #include <random>
 #include <algorithm> 
+#include "DataBase.h"
 
 using namespace std;
 class Question{
@@ -21,7 +22,7 @@ public:
 	int getId();
 };
 
-int callbackQuestions(void *ans, int argc, char **argv, char **azColName){
+int callback(void *ans, int argc, char **argv, char **azColName){
 	if (argc != 0){
 		vector<Question*>* _users = (vector<Question*>*)ans;
 		_users->push_back(new Question(atoi(argv[0]), argv[1], argv[2], argv[3], argv[4], argv[5]));
@@ -33,22 +34,14 @@ int callbackQuestions(void *ans, int argc, char **argv, char **azColName){
 }
 
 int main(){
-	sqlite3* _db;
-	char *_zErrMsg = 0;
-	if (sqlite3_open("trivia.db", &_db)){
-		cout << "Can't open database: " << sqlite3_errmsg(_db) << endl;
-		sqlite3_close(_db);
-		system("Pause");
-		return(1);
+	try{
+		DataBase d;
+		//d.addAnswerToPlayer(25, "Steven", 4, "true", true, 3); works
+		//d.addNewUser("Steven123", "123654", "Err@ee.ocom");
 	}
-	vector<Question*> q;
-	string sql = "SELECT * FROM t_questions;";
-	int rc = sqlite3_exec(_db, sql.c_str(), callbackQuestions, &q, &_zErrMsg);
-	if (rc != SQLITE_OK){
-		fprintf(stderr, "SQL error: %s\n", _zErrMsg);
-		sqlite3_free(_zErrMsg);
+	catch (exception e){
+		cout << e.what() << endl;
 	}
-	sqlite3_close(_db);
 	system("pause");
 	return 0;
 }

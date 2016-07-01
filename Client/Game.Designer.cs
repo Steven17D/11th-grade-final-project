@@ -74,7 +74,7 @@
             this.questionNumberLable.Name = "questionNumberLable";
             this.questionNumberLable.Size = new System.Drawing.Size(752, 33);
             this.questionNumberLable.TabIndex = 29;
-            this.questionNumberLable.Text = "Question: 0/5";
+            this.questionNumberLable.Text = "Question: ";
             this.questionNumberLable.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // roomNameLabel
@@ -136,7 +136,7 @@
             this.scoreLable.Name = "scoreLable";
             this.scoreLable.Size = new System.Drawing.Size(752, 34);
             this.scoreLable.TabIndex = 34;
-            this.scoreLable.Text = "Score: 0/4";
+            this.scoreLable.Text = "Score: ";
             this.scoreLable.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // questionLable
@@ -157,7 +157,6 @@
             this.timeLeftLable.Name = "timeLeftLable";
             this.timeLeftLable.Size = new System.Drawing.Size(752, 48);
             this.timeLeftLable.TabIndex = 36;
-            this.timeLeftLable.Text = "5";
             this.timeLeftLable.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Game

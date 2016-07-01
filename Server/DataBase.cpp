@@ -1,5 +1,5 @@
 #include "DataBase.h"
-
+#include "Helper.h"
 #include <sstream>
 #include <time.h>
 
@@ -12,12 +12,19 @@ int DataBase::callbackQuestions(void* Questions, int argc, char** argv, char** a
 	if (argc != 0){
 		vector<Question*>* _users = (vector<Question*>*)Questions;
 		_users->push_back(new Question(atoi(argv[0]), argv[1], argv[2], argv[3], argv[4], argv[5]));
+		for (int i = 0; i < argc; i++){
+			cout << i << ": " << argv[i] << endl;
+		}
 	}
 	return 0;
 }
 
-int DataBase::callbackBestScores(void* NotUse, int argc, char** argv, char** azColName){
-	
+int DataBase::callbackBestScores(void* usersAndScores, int argc, char** argv, char** azColName){
+	if (argc != 0){
+		vector<string>* _usersAndScores = (vector<string>*)usersAndScores;
+		_usersAndScores->push_back(argv[0]);
+		_usersAndScores->push_back(argv[1]);
+	}
 	return 0;
 }
 
@@ -122,18 +129,66 @@ vector<Question*> DataBase::initQuestions(int questionsNo){
 
 vector<string> DataBase::getBestScores(){
 	vector<string> s;
-
+	string sql = "SELECT username, COUNT(*) FROM t_players_answers GROUP BY username ORDER BY COUNT(*) DESC LIMIT 3 ;";
+	int rc = sqlite3_exec(_db, sql.c_str(), callbackBestScores, &s, &_zErrMsg);
+	if (rc != SQLITE_OK){
+		fprintf(stderr, "SQL error: %s\n", _zErrMsg);
+		sqlite3_free(_zErrMsg);
+	}
 	return s;
 }
 
 vector<string> DataBase::getPersonalStatus(string username){
 	vector<string> s;
-	string sql = "SELECT _ FROM _ WHERE ;";
-	int rc = sqlite3_exec(_db, sql.c_str(), callbackPersonalStatus, &s, &_zErrMsg);
+	string games_count;
+	string sql = "SELECT COUNT(game_id) FROM t_games WHERE username = " + username + " ;";
+	int rc = sqlite3_exec(_db, sql.c_str(), callbackPassword, &games_count, &_zErrMsg);
 	if (rc != SQLITE_OK){
 		fprintf(stderr, "SQL error: %s\n", _zErrMsg);
 		sqlite3_free(_zErrMsg);
 	}
+	s.push_back(Helper::getPaddedNumber(atoi(games_count.c_str()), 4));//number of games
+	string correct_ans;
+	sql = "SELECT SUM(is_correct) FROM t_players_answers WHERE username ='" + username + "';";
+	rc = sqlite3_exec(_db, sql.c_str(), callbackPassword, &correct_ans, &_zErrMsg);
+	if (rc != SQLITE_OK){
+		fprintf(stderr, "SQL error: %s\n", _zErrMsg);
+		sqlite3_free(_zErrMsg);
+	}
+	s.push_back(Helper::getPaddedNumber(atoi(correct_ans.c_str()), 6));
+	string num_of_ans;
+	sql = "SELECT COUNT(username) FROM t_players_answers WHERE username ='" + username + "';";
+	rc = sqlite3_exec(_db, sql.c_str(), callbackPassword, &num_of_ans, &_zErrMsg);
+	if (rc != SQLITE_OK){
+		fprintf(stderr, "SQL error: %s\n", _zErrMsg);
+		sqlite3_free(_zErrMsg);
+	}
+	string temp1 = to_string(atoi(num_of_ans.c_str()) - atoi(correct_ans.c_str()));
+	s.push_back(Helper::getPaddedNumber(atoi(temp1.c_str()), 6));
+	string time;
+	sql = "SELECT AVG(answer_time) FROM t_players_answers WHERE username = '" + username + "';";
+	rc = sqlite3_exec(_db, sql.c_str(), callbackPassword, &time, &_zErrMsg);
+	if (rc != SQLITE_OK){
+		fprintf(stderr, "SQL error: %s\n", _zErrMsg);
+		sqlite3_free(_zErrMsg);
+	}
+	string temp2 = "";
+	if (time[1] == '.')
+	{
+		temp2.push_back('0');
+		temp2.push_back(time[0]);
+		temp2.push_back(time[2]);
+		temp2.push_back(time[3]);
+	}
+	else
+	{
+		temp2.push_back(time[0]);
+		temp2.push_back(time[1]);
+		temp2.push_back(time[3]);
+		temp2.push_back(time[4]);
+	}
+	s.push_back(temp2);
+
 	return s;
 }
 

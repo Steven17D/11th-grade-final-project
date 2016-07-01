@@ -26,6 +26,8 @@ namespace Client
 
         private void joinB_Click(object sender, EventArgs e)
         {
+            if (roomList.SelectedItem == null)
+                return;
             string selectedRoomId = roomList.SelectedItem.ToString().Substring(9, 4);
             string joinMsg = "209" + selectedRoomId;
             NetworkStream serverStream = clientSocket.GetStream();

@@ -38,6 +38,7 @@ void User::setGame(Game* g){
 
 void User::clearRoom(){
 	_currRoom = nullptr;
+	delete _currRoom;
 }
 
 bool User::createRoom(int roomId, string roomName, int maxUsers, int questionsNo, int questionTime){
