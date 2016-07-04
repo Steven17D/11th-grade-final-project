@@ -1,0 +1,5 @@
+﻿1>------ Build started: Project: Server, Configuration: Debug Win32 ------
+1>  DataBase.cpp
+1>c:\users\user\desktop\hw\project\steven17d-end-project-2667f8e758cd\steven17d-end-project-2667f8e758cd\server\database.cpp(122): warning C4018: '>=' : signed/unsigned mismatch
+1>  Server.vcxproj -> C:\Users\User\Desktop\hw\project\Steven17D-end-project-2667f8e758cd\Steven17D-end-project-2667f8e758cd\Debug\Server.exe
+========== Build: 1 succeeded, 0 failed, 1 up-to-date, 0 skipped ==========

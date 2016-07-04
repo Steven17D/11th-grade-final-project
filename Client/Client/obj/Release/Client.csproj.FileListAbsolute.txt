@@ -1,0 +1,45 @@
+C:\Users\StevenD\Desktop\End Project\Client\bin\Release\Client.exe.config
+C:\Users\StevenD\Desktop\End Project\Client\bin\Release\Client.exe
+C:\Users\StevenD\Desktop\End Project\Client\bin\Release\Client.pdb
+C:\Users\StevenD\Desktop\End Project\Client\obj\Release\Client.BestScores.resources
+C:\Users\StevenD\Desktop\End Project\Client\obj\Release\Client.ConnectionFailed.resources
+C:\Users\StevenD\Desktop\End Project\Client\obj\Release\Client.Game.resources
+C:\Users\StevenD\Desktop\End Project\Client\obj\Release\Client.Menu.resources
+C:\Users\StevenD\Desktop\End Project\Client\obj\Release\Client.MyStatus.resources
+C:\Users\StevenD\Desktop\End Project\Client\obj\Release\Client.Properties.Resources.resources
+C:\Users\StevenD\Desktop\End Project\Client\obj\Release\Client.RoomCreate.resources
+C:\Users\StevenD\Desktop\End Project\Client\obj\Release\Client.RoomSelect.resources
+C:\Users\StevenD\Desktop\End Project\Client\obj\Release\Client.Scores.resources
+C:\Users\StevenD\Desktop\End Project\Client\obj\Release\Client.SignUp.resources
+C:\Users\StevenD\Desktop\End Project\Client\obj\Release\Client.WaitForGame.resources
+C:\Users\StevenD\Desktop\End Project\Client\obj\Release\Client.csproj.GenerateResource.Cache
+C:\Users\StevenD\Desktop\End Project\Client\obj\Release\Client.exe
+C:\Users\StevenD\Desktop\End Project\Client\obj\Release\Client.pdb
+C:\Users\StevenD\Desktop\End Project\Client\obj\Release\Client.csprojResolveAssemblyReference.cache
+C:\Users\StevenD\Desktop\triviaProjectAdditionalFiles\Project\end-project\Client\bin\Release\Client.exe.config
+C:\Users\StevenD\Desktop\triviaProjectAdditionalFiles\Project\end-project\Client\obj\Release\Client.exe
+C:\Users\StevenD\Desktop\triviaProjectAdditionalFiles\Project\end-project\Client\obj\Release\Client.pdb
+C:\Users\User\Desktop\hw\Steven17D-end-project-cdad164c3903\Steven17D-end-project-cdad164c3903\Client\bin\Release\Client.exe.config
+C:\Users\User\Desktop\hw\Steven17D-end-project-cdad164c3903\Steven17D-end-project-cdad164c3903\Client\obj\Release\Client.exe
+C:\Users\User\Desktop\hw\Steven17D-end-project-cdad164c3903\Steven17D-end-project-cdad164c3903\Client\obj\Release\Client.pdb
+C:\Users\StevenD\Desktop\client project\Steven17D-end-project-cdad164c3903\Client\bin\Release\Client.exe.config
+C:\Users\StevenD\Desktop\client project\Steven17D-end-project-cdad164c3903\Client\obj\Release\Client.exe
+C:\Users\StevenD\Desktop\client project\Steven17D-end-project-cdad164c3903\Client\obj\Release\Client.pdb
+C:\Users\StevenD\Desktop\client project\Steven17D-end-project-cdad164c3903\Client\bin\Release\Client.exe
+C:\Users\StevenD\Desktop\client project\Steven17D-end-project-cdad164c3903\Client\bin\Release\Client.pdb
+C:\Users\StevenD\Desktop\client project\Steven17D-end-project-cdad164c3903\Client\obj\Release\Client.csprojResolveAssemblyReference.cache
+C:\Users\StevenD\Desktop\client project\Steven17D-end-project-cdad164c3903\Client\obj\Release\Client.BestScores.resources
+C:\Users\StevenD\Desktop\client project\Steven17D-end-project-cdad164c3903\Client\obj\Release\Client.ConnectionFailed.resources
+C:\Users\StevenD\Desktop\client project\Steven17D-end-project-cdad164c3903\Client\obj\Release\Client.Game.resources
+C:\Users\StevenD\Desktop\client project\Steven17D-end-project-cdad164c3903\Client\obj\Release\Client.Menu.resources
+C:\Users\StevenD\Desktop\client project\Steven17D-end-project-cdad164c3903\Client\obj\Release\Client.MyStatus.resources
+C:\Users\StevenD\Desktop\client project\Steven17D-end-project-cdad164c3903\Client\obj\Release\Client.Properties.Resources.resources
+C:\Users\StevenD\Desktop\client project\Steven17D-end-project-cdad164c3903\Client\obj\Release\Client.RoomCreate.resources
+C:\Users\StevenD\Desktop\client project\Steven17D-end-project-cdad164c3903\Client\obj\Release\Client.RoomSelect.resources
+C:\Users\StevenD\Desktop\client project\Steven17D-end-project-cdad164c3903\Client\obj\Release\Client.Scores.resources
+C:\Users\StevenD\Desktop\client project\Steven17D-end-project-cdad164c3903\Client\obj\Release\Client.SignUp.resources
+C:\Users\StevenD\Desktop\client project\Steven17D-end-project-cdad164c3903\Client\obj\Release\Client.WaitForGame.resources
+C:\Users\StevenD\Desktop\client project\Steven17D-end-project-cdad164c3903\Client\obj\Release\Client.csproj.GenerateResource.Cache
+C:\Users\StevenD\Desktop\triviaProjectAdditionalFiles\Project\Finished Project\Client\Client\bin\Release\Client.exe.config
+C:\Users\StevenD\Desktop\triviaProjectAdditionalFiles\Project\Finished Project\Client\Client\obj\Release\Client.exe
+C:\Users\StevenD\Desktop\triviaProjectAdditionalFiles\Project\Finished Project\Client\Client\obj\Release\Client.pdb
