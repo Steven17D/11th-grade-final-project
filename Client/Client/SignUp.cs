@@ -32,8 +32,8 @@ namespace Client
             }
             string signUpMsg = "203" +
                 userNameBox.Text.Length.ToString().PadLeft(2, '0') + userNameBox.Text +
-                emailBox.Text.Length.ToString().PadLeft(2, '0') + emailBox.Text +
-                passwordBox.Text.Length.ToString().PadLeft(2, '0') + passwordBox.Text;
+                passwordBox.Text.Length.ToString().PadLeft(2, '0') + passwordBox.Text +
+                emailBox.Text.Length.ToString().PadLeft(2, '0') + emailBox.Text;
             NetworkStream serverStream = clientSocket.GetStream();
             byte[] outStream = System.Text.Encoding.ASCII.GetBytes(signUpMsg);
             serverStream.Write(outStream, 0, outStream.Length);

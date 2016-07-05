@@ -168,9 +168,9 @@ void TriviaServer::handleLeaveGame(RecievedMessage* r){
 	}
 }
 void TriviaServer::handleStartGame(RecievedMessage* r){
-	vector<User*> users = r->getUser()->getRoom()->getUsers(); //users int the room
+	vector<User*> users = r->getUser()->getRoom()->getUsers(); //users in the room
 	Room* adminRoom = r->getUser()->getRoom();
-	for (int i = 0; i < users.size(); i++){
+	for (unsigned int i = 0; i < users.size(); i++){
 		users[i]->clearRoom();
 	}
 	Game* g = nullptr;
@@ -275,7 +275,7 @@ void TriviaServer::handleGetRooms(RecievedMessage* r){
 void TriviaServer::handleGetBestScores(RecievedMessage* r){
 	vector<string> scores = _db.getBestScores();
 	string msg = "124";
-	for (int i = 0; i < scores.size(); i = i + 2){
+	for (unsigned int i = 0; i < scores.size(); i = i + 2){
 		msg = msg + Helper::getPaddedNumber(scores[i].size(),2) + scores[i];
 		msg = msg + Helper::getPaddedNumber(atoi(scores[i + 1].c_str()), 6);
 	}
@@ -293,7 +293,7 @@ void TriviaServer::handleGetPersonalStatus(RecievedMessage* r){
 	string msg = "126";
 	User* u = getUserBySocket(r->getSock());
 	vector<string> vec = _db.getPersonalStatus(u->getUsername());
-	for (int i = 0; i < vec.size(); i++){
+	for (unsigned int i = 0; i < vec.size(); i++){
 		msg += vec[i];
 	}
 	u->send(msg);

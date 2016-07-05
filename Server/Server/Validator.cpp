@@ -1,7 +1,7 @@
 #include "Validator.h"
 
 bool Validator::isPasswordValid(string password){
-	/*correct password should contain then 3 chars
+	/*correct password should contain more then 3 chars
 	must not contain spaces
 	must contain one number
 	must contain one upper case char
