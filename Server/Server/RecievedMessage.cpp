@@ -11,7 +11,6 @@ RecievedMessage::RecievedMessage(SOCKET s, int messageCode, vector<string> value
 	_values = values;
 }
 
-
 SOCKET RecievedMessage::getSock(){
 	return _sock;
 }
