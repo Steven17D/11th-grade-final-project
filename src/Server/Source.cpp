@@ -1,9 +1,6 @@
 #include "TriviaServer.h"
 #include "Validator.h"
 #include "DataBase.h"
-#include <iostream>
-#include <string>
-#include <thread>
 
 //      ______ _   __ ____     ____   ____   ____       __ ______ ______ ______                  
 //     / ____// | / // __ \   / __ \ / __ \ / __ \     / // ____// ____//_  __/                  
@@ -15,8 +12,6 @@
 //   ___/ / / /  / /___   | |/ // /___ / /|  /  / /_/  <       / // ___ | / _, _// /_/ // /|  /  
 //  /____/ /_/  /_____/   |___//_____//_/ |_/   \____/\/      /_//_/  |_|/_/ |_| \____//_/ |_/   
 //                                                                                               
-
-using namespace std;
 
 int main(){ 
 	TriviaServer t;
